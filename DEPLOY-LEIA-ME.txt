@@ -1,0 +1,11 @@
+CRM Nunes - versão com login e Kanban integrado
+
+1. Faça backup da pasta atual do CRM.
+2. Copie o conteúdo desta pasta para o diretório local do projeto. NÃO substitua o diretório .git local.
+3. No CMD, dentro do projeto: git add . && git commit -m "Integrar interface CRM Nunes" && git push origin main
+4. Cloudflare Pages realizará o novo build. As variáveis VITE_SUPABASE_URL e VITE_SUPABASE_ANON_KEY devem estar nas configurações do build.
+5. Verifique no Supabase se as tabelas 'leads' e 'pipeline_stages' existem e se os IDs das seis etapas coincidem com os IDs do arquivo supabase_pipeline.sql.
+6. Verifique as políticas RLS de leads por proprietário (criado_por = auth.uid()). NÃO use uma política using(true) para todos os usuários se os leads são privados.
+7. Teste: autenticação, novo lead, editar, arrastar, atualizar página, importar e exportar CSV. A importação CSV atual é simples (não suporta vírgulas internas entre aspas).
+
+Notas: sem configuração de senha, chaves secretas ou login de usuário embutidos. CSV e telas ainda precisam de testes reais com o Supabase. O projeto conserva os arquivos auxiliares do frontend; não inclui .git, node_modules nem .env reais.
